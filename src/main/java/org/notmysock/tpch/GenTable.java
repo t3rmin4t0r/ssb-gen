@@ -107,7 +107,7 @@ public class GenTable extends Configured implements Tool {
         conf.setInt("mapred.task.timeout",0);
         conf.setInt("mapreduce.task.timeout",0);
         DistributedCache.addCacheArchive(link, conf);
-        Job job = new Job(conf, "GenTable+"+table+"_"+scale);
+        Job job = new Job(conf, "GenTable-ssb+"+table+"_"+scale);
         job.setJarByClass(getClass());
         job.setNumReduceTasks(0);
         job.setMapperClass(dbgen.class);
