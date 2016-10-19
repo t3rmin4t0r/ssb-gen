@@ -13,7 +13,7 @@ target/tools: ssb-dbgen/README
 	cp -avf ssb-dbgen/* target/tools/
 
 target/tools/dbgen: target/tools
-	cd target/tools/; make dbgen CC=gcc DATABASE=ORACLE MACHINE=LINUX WORKLOAD=TPCH
+	cd target/tools/; make dbgen CC=gcc DATABASE=ORACLE MACHINE=LINUX WORKLOAD=SSBM
 
 target/lib/dbgen.jar: target/tools/dbgen
 	cd target/; mkdir -p lib/; ( jar cvf lib/dbgen.jar tools/ || gjar cvf lib/dbgen.jar tools/ )
