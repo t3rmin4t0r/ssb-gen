@@ -172,7 +172,13 @@ public class GenTable extends Configured implements Tool {
         FSDataOutputStream out = fs.create(in);
         for(int i = 1; i <= parallel; i++) {
           if(table.equals("all")) {
-            out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d\n", scale, parallel, i));
+            out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T c \n", scale, parallel, i));
+            out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T l \n", scale, parallel, i));
+            out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T p \n", scale, parallel, i));
+            out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T s \n", scale, parallel, i));
+            if (i == 1) {
+              out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T d \n", scale, parallel, i));
+            }
           } else {
         	out.writeBytes(String.format("$DIR/dbgen/tools/dbgen -b $DIR/dbgen/tools/dists.dss -f -s %d -C %d -S %d -T %s\n", scale, parallel, i, table));           
           }
@@ -223,6 +229,14 @@ public class GenTable extends Configured implements Tool {
         }
 
         Process p = Runtime.getRuntime().exec(cmd, null, new File("."));
+
+        BufferedInputStream in = new BufferedInputStream(p.getInputStream());
+        byte[] bytes = new byte[4096];
+        int v = 0;
+        while ((v = in.read(bytes)) != -1) {
+          System.out.println(new String(bytes, 0, v));
+        } // junk the input stream
+
         int status = p.waitFor();
         if(status != 0) {
           String err = readToString(p.getErrorStream());
