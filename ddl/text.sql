@@ -16,10 +16,20 @@ CREATE EXTERNAL TABLE `dates`(
   `d_date` string, 
   `d_dayofweek` string, 
   `d_month` string, 
-  `d_year` string, 
-  `d_yearmonthnum` string, 
+  `d_year` int, 
+  `d_yearmonthnum` int, 
   `d_yearmonth` string, 
-  `d_daynuminweek` string)
+  `d_daynuminweek` int,
+  `d_daynuminmonth` int,
+  `d_daynuminyear` int,
+  `d_monthnuminyear` int,
+  `d_weeknuminyear` int,
+  `d_sellingseason` string,
+  `d_lastdayinweekfl` int,
+  `d_lastdayinmonthfl` int,
+  `d_holidayfl` int ,
+  `d_weekdayfl`int
+)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|' STORED AS TEXTFILE 
 LOCATION '${LOCATION}/date';
   ;
