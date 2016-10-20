@@ -20,7 +20,7 @@ CREATE TABLE `lineorder`(
   `lo_tax` double, 
   `lo_commitdate` string, 
   `lo_shipmode` string)
-partitioned by(lo_orderdate string)
+partitioned by(lo_orderdate bigint)
 stored as orc
 ;
 
