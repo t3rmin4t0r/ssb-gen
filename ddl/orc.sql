@@ -1,7 +1,7 @@
-create table customer stored as orc as select * from ${SOURCE}.customer;
+create table customer stored as orc as select * from ${SOURCE}.customer sort by c_region;
 create table dates stored as orc as select * from ${SOURCE}.dates;
-create table part stored as orc as select * from ${SOURCE}.part;
-create table supplier stored as orc as select * from ${SOURCE}.supplier;
+create table part stored as orc as select * from ${SOURCE}.part sort by p_mfgr;
+create table supplier stored as orc as select * from ${SOURCE}.supplier sort by s_region;
 
 CREATE TABLE `lineorder`(
   `lo_orderkey` bigint, 
