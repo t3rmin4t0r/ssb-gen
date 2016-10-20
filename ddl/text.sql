@@ -21,26 +21,26 @@ CREATE EXTERNAL TABLE `dates`(
   `d_yearmonth` string, 
   `d_daynuminweek` string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|' STORED AS TEXTFILE 
-LOCATION '${LOCATION}/dates';
+LOCATION '${LOCATION}/date';
   ;
 CREATE EXTERNAL TABLE `lineorder`(
-  `l_orderkey` bigint, 
-  `l_linenumber` int, 
-  `l_custkey` bigint, 
-  `l_partkey` bigint, 
-  `l_suppkey` bigint, 
-  `l_orderdate` string, 
-  `l_ordpriority` string, 
-  `l_shippriority` string, 
-  `l_quantity` double, 
-  `l_extendedprice` double, 
-  `l_ordtotalprice` double, 
-  `l_discount` double, 
-  `l_revenue` double, 
-  `l_supplycost` double, 
-  `l_tax` double, 
-  `l_commitdate` string, 
-  `l_shipmode` string)
+  `lo_orderkey` bigint, 
+  `lo_linenumber` int, 
+  `lo_custkey` bigint, 
+  `lo_partkey` bigint, 
+  `lo_suppkey` bigint, 
+  `lo_orderdate` string, 
+  `lo_ordpriority` string, 
+  `lo_shippriority` string, 
+  `lo_quantity` double, 
+  `lo_extendedprice` double, 
+  `lo_ordtotalprice` double, 
+  `lo_discount` double, 
+  `lo_revenue` double, 
+  `lo_supplycost` double, 
+  `lo_tax` double, 
+  `lo_commitdate` string, 
+  `lo_shipmode` string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|' STORED AS TEXTFILE 
 LOCATION '${LOCATION}/lineorder';
   ;
