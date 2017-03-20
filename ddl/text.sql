@@ -39,7 +39,7 @@ CREATE EXTERNAL TABLE `lineorder`(
   `lo_custkey` bigint, 
   `lo_partkey` bigint, 
   `lo_suppkey` bigint, 
-  `lo_orderdate` string, 
+  `lo_orderdate` bigint, 
   `lo_ordpriority` string, 
   `lo_shippriority` string, 
   `lo_quantity` double, 
@@ -49,7 +49,7 @@ CREATE EXTERNAL TABLE `lineorder`(
   `lo_revenue` double, 
   `lo_supplycost` double, 
   `lo_tax` double, 
-  `lo_commitdate` string, 
+  `lo_commitdate` bigint, 
   `lo_shipmode` string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '|' STORED AS TEXTFILE 
 LOCATION '${LOCATION}/lineorder';
