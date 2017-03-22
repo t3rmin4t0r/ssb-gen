@@ -9,5 +9,8 @@ hive --database ssb_${SCALE}_raw -d LOCATION=/tmp/ssb/${SCALE} -f ddl/text.sql
 hive --database ssb_${SCALE}_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/orc.sql
 hive --database ssb_${SCALE}_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/analyze.sql 
 
+hive --database ssb_${SCALE}_flat_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/orc_flat.sql
+hive --database ssb_${SCALE}_flat_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/analyze_flat.sql;
+
 hive --database ssb_${SCALE}_index_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/orc_bloom.sql
 hive --database ssb_${SCALE}_index_orc -d SOURCE=ssb_${SCALE}_raw -f ddl/analyze_flat.sql;
